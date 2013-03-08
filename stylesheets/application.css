@@ -433,17 +433,18 @@ label {
 
 input[type=time] {
   border: 3px dashed white;
+  padding: 3px 0;
   width: 175px;
   margin: 5px 0;
   font-size: 1.2em;
   color: white;
   background-color: transparent; }
+  input[type=time]::-webkit-inner-spin-button, input[type=time]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
   input[type=time]:disabled {
     border: none;
     opacity: 1; }
-    input[type=time]:disabled::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0; }
   input[type=time].wake-time {
     text-align: center;
     display: inline-block;
