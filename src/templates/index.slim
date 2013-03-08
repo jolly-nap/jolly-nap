@@ -26,19 +26,25 @@ html.no-js
         .subtitle Sleep Calculator
 
       .content
-        .btn-container
-          a#sleep-now.btn.primary(href='#sleep-now') Sleep now
-        .wake-time-explanation.blurb Try to wake up at:
-        #wake-times
-        .bed-time.blurb You need 6 sleep cycles to wake up rested.
-
         .get-up.blurb When do you have to wake up?
         .wake-up-container
           label(for="wake-up-time") Wake Up Time
           input#wake-up-time(type='time' name='wake-up-time' value="00:00" required)
 
+        .btn-container
+          .bed-time.blurb
+            p Going to bed now?
+            p Find out when you have to wake up.
+          a#sleep-now.btn.primary(href='#sleep-now') Sleep now
+
+        .wake-up-at.blurb Try to wake up at:
+
+        #wake-times
+        .wake-time-explanation.blurb You need 6 sleep cycles to wake up rested.
+
+        .share
+          iframe.fb-like(src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjollynap.com&amp;send=false&amp;layout=button_count&amp;width=160&amp;show_faces=false&amp;font&amp;colorscheme=dark&amp;action=like&amp;height=21&amp;appId=349697388482885" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:160px; height:21px;" allowTransparency="true")
+
     footer.site-footer
-      .share
-        iframe.fb-like(src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjollynap.com&amp;send=false&amp;layout=button_count&amp;width=160&amp;show_faces=false&amp;font&amp;colorscheme=dark&amp;action=like&amp;height=21&amp;appId=349697388482885" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:160px; height:21px;" allowTransparency="true")
       script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
       script src="javascripts/application.js"
