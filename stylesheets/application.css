@@ -401,17 +401,21 @@ body {
   color: white;
   font-size: 16px;
   font-family: "Press Start 2P", sans-serif;
-  text-shadow: 0px 2px 1px #787878; }
+  text-shadow: 0px 1px 0px #787878, 0px 2px 0px #787878; }
 
 .site-header {
-  margin: 15px 0;
+  margin: 20px 0 15px;
   text-align: center; }
   .site-header .logo {
+    display: inline-block;
     font-size: 3em;
     margin-bottom: 20px;
-    text-shadow: -1px 4px 1px #787878; }
-  .site-header .subtitle {
-    text-shadow: 0px 2px 1px #787878; }
+    text-shadow: -1px 4px 0px #787878; }
+  .site-header .accent {
+    display: inline-block;
+    position: relative;
+    font-size: 0.24em;
+    top: -3.5em; }
 
 .clock {
   margin: 30px 0;
