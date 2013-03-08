@@ -1,3 +1,10 @@
+$wellness-0: hsl(36, 100%, 66%)
+$wellness-1: hsl(46, 100%, 64%)
+$wellness-2: hsl(46, 100%, 64%)
+$wellness-3: hsl(62, 75%, 58%)
+$wellness-4: hsl(80, 84%, 60%)
+$wellness-5:  hsl(121, 100%, 62%)
+
 *
   box-sizing: border-box
 
@@ -5,6 +12,10 @@ html
   min-height: 100%
 
 body
+  // max-width: 320px
+  // max-height: 356px
+  // border: 1px solid #333
+  margin: 0 auto
   line-height: 1
   height: 100%
   min-height: 100%
@@ -13,6 +24,8 @@ body
   background-image: url('data:image/png;base64,' + $background-image)
   background-size: 7px 7px
   color: #fff
+  text-align: center
+
   font:
     size: 16px
     family: "Press Start 2P", sans-serif
@@ -25,8 +38,8 @@ body
 
   .logo
     display: inline-block
-    font-size: 3em
-    margin-bottom: 20px
+    font-size: 2em
+    margin-bottom: 10px
 
     text-shadow: -1px 4px 0px hsl(0, 0%, 47%)
 
@@ -36,91 +49,92 @@ body
     font-size: 0.24em
     top: -3.5em
 
-  // .subtitle
-    // text-shadow: 0px 2px 1px hsl(0, 0%, 47%)
+  .subtitle
+    color: hsl(154, 100%, 50%)
+    text-shadow: 0px 2px 1px hsl(154, 100%, 17%)
+
+.blurb
+  &.bed-time
+    margin-top: 20px
+  &.get-up
+    margin-top: 35px
+    margin-bottom: 10px
 
 
-.clock
-  margin: 30px 0
-  font-size: 1.5em
-  text-align: center
+label
+  display: none
+input
+  border: none
 
-  & > *
-    display: inline-block
+  &[type=time]
+    margin: 5px 0
+    font-size: 1.2em
+    color: #fff
+    background-color: transparent
 
-    // Webkit has some strange artifacts on non-standard font updates.
-    // This seems to fix it.
-    padding-top: 2px
+    &:disabled
+      &::-webkit-inner-spin-button
+        -webkit-appearance: none
+        margin: 0
 
-  .hours
-    margin-right: 2px
-  .minutes
-    margin-right: 10px
-  .seconds
-    margin-right: 10px
+    &.wake-time
+      min-width: 100%
+      text-align: center
+      display: inline-block
+      margin-top: 10px
+
+      &[data-wellness='0']
+        color: $wellness-0
+        text-shadow: 0px 1px 0px darken($wellness-0, 50%), 0px 2px 0px darken($wellness-0, 50%)
+
+      &[data-wellness='1']
+        color: $wellness-1
+        text-shadow: 0px 1px 0px darken($wellness-1, 50%), 0px 2px 0px darken($wellness-1, 50%)
+
+      &[data-wellness='2']
+        color: $wellness-2
+        text-shadow: 0px 1px 0px darken($wellness-2, 50%), 0px 2px 0px darken($wellness-2, 50%)
+      &[data-wellness='3']
+        color: $wellness-3
+        text-shadow: 0px 1px 0px darken($wellness-3, 50%), 0px 2px 0px darken($wellness-3, 50%)
+      &[data-wellness='4']
+        color: $wellness-4
+        text-shadow: 0px 1px 0px darken($wellness-4, 50%), 0px 2px 0px darken($wellness-4, 50%)
+      &[data-wellness='5']
+        color: $wellness-5
+        text-shadow: 0px 1px 0px darken($wellness-5, 50%), 0px 2px 0px darken($wellness-5, 50%)
 
 .btn
-  +user-select(none)
-  display: inline-block
+  display: block
   font-size: 18px
+  text-decoration: none
 
   color: white
   background-color: hsl(172, 100%, 47%)
   padding: 10px 20px
-  margin: 20px
+  margin: 10px
   border-radius: 2px
 
-  box-shadow: 0px 6px 0 hsl(172, 50%, 47%), 2px 8px 8px #555
-  text-shadow: 0px -1px 0 hsl(0, 0%, 67%)
+  box-shadow: 0px 6px 0 hsl(172, 50%, 47%), 2px 8px 17px hsl(172, 26%, 36%), inset 1px 1px 4px hsl(171, 0%, 100%)
+
+  text-shadow: 0px -1px 0 hsl(0, 0%, 37%)
 
   &:hover
-    position: relative
-    bottom: 2px
-    -webkit-transition-property: all
-    -webkit-transition-duration: 200ms
-    -webkit-transition-timing-function: ease-out
-
-    -moz-transition-property: all
-    -moz-transition-duration: 200ms
-    -moz-transition-timing-function: ease-out
+    +transition-property(all)
+    +transition-duration(200ms)
+    +transition-timing-function(ease-out)
 
     background-color: hsl(172, 95%, 47%)
-    box-shadow: 0px 8px 0 hsl(172, 50%, 47%), 3px 10px 10px #555
-
-  &:active
-    position: relative
-    bottom: -5px
-    -webkit-transition-property: all
-    -webkit-transition-duration: 100ms
-    -webkit-transition-timing-function: ease-out
-
-    -moz-transition-property: all
-    -moz-transition-duration: 100ms
-    -moz-transition-timing-function: ease-out
-
-    background-color: hsl(172, 95%, 47%)
-    box-shadow: 0px 1px 0 hsl(172, 50%, 47%), 2px 3px 5px #555
+    box-shadow: 0 6px 0 hsl(172, 50%, 47%), 3px 10px 10px hsl(172, 26%, 36%), inset 1px 1px 4px hsl(171, 0%, 100%)
 
 
-
-  &.secondary
+  &.primary
     background-color: hsl(345, 100%, 47%)
-    box-shadow: 0px 6px 0 hsl(345, 50%, 47%), 2px 8px 8px #555
+    box-shadow: 0px 6px 0 hsl(345, 50%, 47%), 2px 8px 18px hsl(345, 68%, 34%), inset 1px 1px 4px hsl(0, 72%, 71%)
     text-shadow: 0px -1px 0 hsl(0, 0%, 20%)
 
-
     &:hover
-      position: relative
-      bottom: 2px
-
       background-color: hsl(346, 95%, 47%)
-      box-shadow: 0px 8px 0 hsl(345, 50%, 47%), 3px 10px 10px #555
+      box-shadow: 0px 6px 0 hsl(345, 50%, 47%), 3px 10px 10px hsl(345, 68%, 34%), inset 1px 1px 4px hsl(0, 72%, 71%)
 
-
-    &:active
-      position: relative
-      bottom: -5px
-
-      background-color: hsl(345, 95%, 47%)
-      box-shadow: 0px 1px 0 hsl(345, 50%, 47%), 2px 3px 5px #555
 

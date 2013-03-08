@@ -19,28 +19,19 @@ html
     header.site-header
       span.logo
         | Jolly Nap
-      span.accent
-        sup
-          | z
-          sup
-            |z
-            sup Z
+
       .subtitle Sleep Calculator
 
 
+    .bedtime.blurb Going to bed?
+    a#sleep-now.btn.primary(href='#sleep-now') Get Waketime
 
-    section.content
-      #active.clock
-        span.hours
-        span.colon
-        span.minutes
-        span.seconds
-        span.meridian
+    #wake-times
 
-    .sleep-controls
-      | I need to wake up at
-      a#sleep-calculate.btn Calculate
-      a#sleep-now.btn.secondary Sleep Now
+    .get-up.blurb When do you need to get up?
+    label(for="wake-up-time") Wake Up Time
+    input#wake-up-time(type='time' name='wake-up-time' required)
+    a#calculate-wake-time.btn(href='#wake-time') Get Bedtime
 
     footer
       script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"

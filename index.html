@@ -14,16 +14,14 @@
   </head>
   <body>
     <header class="site-header">
-      <span class="logo">Jolly Nap</span><span class="accent"><sup>z<sup>z<sup>Z</sup></sup></sup></span>
+      <span class="logo">Jolly Nap</span>
       <div class="subtitle">Sleep Calculator</div>
     </header>
-    <section class="content">
-      <div class="clock" id="active">
-        <span class="hours"></span><span class="colon"></span><span class="minutes"></span><span class="seconds"></span><span class="meridian"></span>
-      </div>
-    </section>
-    <div class="sleep-controls">I need to wake up at<a class="btn" id="sleep-calculate">Calculate</a><a class="btn secondary" id="sleep-now">Sleep Now</a>
-    </div>
+    <div class="bedtime blurb">Going to bed?</div>
+    <a class="btn primary" href="#sleep-now" id="sleep-now">Get Waketime</a>
+    <div id="wake-times"></div>
+    <div class="get-up blurb">When do you need to get up?</div>
+    <label for="wake-up-time">Wake Up Time</label><input id="wake-up-time" name="wake-up-time" required="required" type="time" /><a class="btn" href="#wake-time" id="calculate-wake-time">Get Bedtime</a>
     <footer>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script src="javascripts/application.js"></script>
