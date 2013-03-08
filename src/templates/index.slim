@@ -1,6 +1,6 @@
 doctype html
 
-html
+html.no-js
   head
     title Jolly Nap
 
@@ -15,7 +15,12 @@ html
     link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"
     link(rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png")
     meta(name="apple-mobile-web-app-capable" content="yes")
+
+    script src="javascripts/modernizr.min.js"
+
   body
+    #fb-root
+
     header.site-header
       span.logo
         | Jolly Nap
@@ -23,18 +28,19 @@ html
       .subtitle Sleep Calculator
 
 
-    .bedtime.blurb Going to bed?
-    a#sleep-now.btn.primary(href='#sleep-now') Get Waketime
+    .bedtime.blurb You need 6 sleep cycles to wake up rested.
+    a#sleep-now.btn.primary(href='#sleep-now') Sleep now
 
     #wake-times
 
-    .get-up.blurb When do you need to get up?
-
+    .get-up.blurb   When do you have to wake up?
     .wake-up-container
       label(for="wake-up-time") Wake Up Time
       input#wake-up-time(type='time' name='wake-up-time' value="00:00" required)
-    a#calculate-wake-time.btn(href='#wake-time') Get Bedtime
 
+    .share
+      .fb-like(data-href="http://jollynap.com" data-send="false" data-layout="button_count" data-width="320" data-show-faces="false" data-colorscheme="dark")
     footer
       script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
       script src="javascripts/application.js"
+      script src="javascripts/facebook.min.js"
