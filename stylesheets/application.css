@@ -432,15 +432,17 @@ label {
   display: none; }
 
 input {
-  border: none; }
+  border: 1px dotted; }
   input[type=time] {
     margin: 5px 0;
     font-size: 1.2em;
     color: white;
     background-color: transparent; }
-    input[type=time]:disabled::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0; }
+    input[type=time]:disabled {
+      opacity: 1; }
+      input[type=time]:disabled::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0; }
     input[type=time].wake-time {
       min-width: 100%;
       text-align: center;
