@@ -5,6 +5,12 @@ $("#sleep-now").click(function(e) {
   return sleepNow();
 });
 
+$('#wake-up-time').change(function(e) {
+  var $input;
+  $input = $(e.target);
+  return $('.wake-up-container').toggleClass('set');
+});
+
 sleepNow = function() {
   var $wakeTimes, i, minutes, now, sleepPrep, wakeTime, wakeTimes, _i, _len;
   $wakeTimes = $('#wake-times');
