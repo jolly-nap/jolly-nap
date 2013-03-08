@@ -1,4 +1,5 @@
 $("#sleep-now").click (e) ->
+  $(@).parent('.btn-container').slideUp()
   e.preventDefault()
   sleepNow()
 
@@ -35,4 +36,6 @@ sleepNow = ->
       "<div>
         <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>
        </div>")
+
+  $(".wake-time-explanation, .bed-time").fadeIn()
   console.log wakeTimes

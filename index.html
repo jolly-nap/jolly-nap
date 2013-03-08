@@ -14,25 +14,30 @@
     <script src="javascripts/modernizr.min.js"></script>
   </head>
   <body>
-    <div id="fb-root"></div>
-    <header class="site-header">
-      <span class="logo">Jolly Nap</span>
-      <div class="subtitle">Sleep Calculator</div>
-    </header>
-    <div class="bedtime blurb">You need 6 sleep cycles to wake up rested.</div>
-    <a class="btn primary" href="#sleep-now" id="sleep-now">Sleep now</a>
-    <div id="wake-times"></div>
-    <div class="get-up blurb">  When do you have to wake up?</div>
-    <div class="wake-up-container">
-      <label for="wake-up-time">Wake Up Time</label><input id="wake-up-time" name="wake-up-time" required="required" type="time" value="00:00" />
+    <div class="wrapper">
+      <header class="site-header">
+        <span class="logo">Jolly Nap</span>
+        <div class="subtitle">Sleep Calculator</div>
+      </header>
+      <div class="content">
+        <div class="btn-container">
+          <a class="btn primary" href="#sleep-now" id="sleep-now">Sleep now</a>
+        </div>
+        <div class="wake-time-explanation blurb">Try to wake up at:</div>
+        <div id="wake-times"></div>
+        <div class="bed-time blurb">You need 6 sleep cycles to wake up rested.</div>
+        <div class="get-up blurb">When do you have to wake up?</div>
+        <div class="wake-up-container">
+          <label for="wake-up-time">Wake Up Time</label><input id="wake-up-time" name="wake-up-time" required="required" type="time" value="00:00" />
+        </div>
+      </div>
     </div>
-    <footer>
+    <footer class="site-footer">
       <div class="share">
-        <div class="fb-like" data-colorscheme="dark" data-href="http://jollynap.com" data-layout="standard" data-send="false" data-show-faces="false" data-width="320"></div>
+        <iframe allowTransparency="true" class="fb-like" frameborder="0" scrolling="no" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjollynap.com&amp;send=false&amp;layout=button_count&amp;width=160&amp;show_faces=false&amp;font&amp;colorscheme=dark&amp;action=like&amp;height=21&amp;appId=349697388482885" style="border:none; overflow:hidden; width:160px; height:21px;"></iframe>
       </div>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script src="javascripts/application.js"></script>
-      <script src="javascripts/facebook.min.js"></script>
     </footer>
   </body>
 </html>

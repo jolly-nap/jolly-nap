@@ -1,6 +1,7 @@
 var sleepNow;
 
 $("#sleep-now").click(function(e) {
+  $(this).parent('.btn-container').slideUp();
   e.preventDefault();
   return sleepNow();
 });
@@ -38,5 +39,6 @@ sleepNow = function() {
     wakeTime = wakeTimes[i];
     $wakeTimes.append("<div>        <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>       </div>");
   }
+  $(".wake-time-explanation, .bed-time").fadeIn();
   return console.log(wakeTimes);
 };
