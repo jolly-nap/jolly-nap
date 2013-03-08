@@ -4,8 +4,9 @@ $ ->
   # Don't want to render nothing in the first second.
   updateClock($clock)
 
+
   setInterval ->
-    updateClock()
+    updateClock($clock)
   , 1000
 
 updateClock = ($clock) ->
