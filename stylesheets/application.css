@@ -434,7 +434,6 @@ label {
 input {
   border: 1px dotted; }
   input[type=time] {
-    width: 162px;
     margin: 5px 0;
     font-size: 1.2em;
     color: white;
