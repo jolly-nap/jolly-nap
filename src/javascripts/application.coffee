@@ -1,38 +1,33 @@
-$ ->
-  $clock = $('#active.clock')
+$("#sleep-now").click (e) ->
+  e.preventDefault()
+  sleepNow()
 
-  # Don't want to render nothing in the first second.
-  updateClock($clock)
+$("#new-bedtime").submit (e) ->
+  e.preventDefault()
+  console.log e
 
 
-  setInterval ->
-    updateClock($clock)
-  , 1000
+sleepNow = ->
+  $wakeTimes = $('#wake-times')
+  # 14 minutes to sleep.
+  sleepPrep = 14
 
-updateClock = ($clock) ->
-  $clockHours    = $clock.children('.hours')
-  $clockMinutes  = $clock.children('.minutes')
-  $clockSeconds  = $clock.children('.seconds')
-  $clockMeridian = $clock.children('.meridian')
-  $clockColon    = $clock.children('.colon')
+  now = new Date()
+  wakeTimes = []
 
-  date = new Date()
+  i = 0
+  while i < 6
+    minutes = now.getMinutes()
+    if i == 0
+      now.setMinutes(minutes + sleepPrep + 90)
+    else
+      now.setMinutes(minutes + 90)
 
-  hours = date.getHours()
-  minutes = date.getMinutes()
-  seconds = date.getSeconds()
+    wakeTimes.push(now.toTimeString().substr(0,5))
+    i++
 
-  meridian = if hours >= 12 then 'PM' else 'AM'
-
-  hours = if hours > 12 then hours - 12 else hours
-  hours = if hours == 0 then 12 else hours
-
-  minutes = if minutes < 10 then '0' + minutes else minutes
-  seconds = if seconds < 10 then '0' + seconds else seconds
-  colon = if seconds % 2 == 0 then '&#58;' else '&nbsp;'
-
-  $clockMeridian.html meridian
-  $clockSeconds.html seconds
-  $clockMinutes.html minutes
-  $clockHours.html hours
-  $clockColon.html colon
+  $wakeTimes.html('')
+  for wakeTime, i in wakeTimes
+    $wakeTimes.append(
+      "<input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>")
+  console.log wakeTimes
