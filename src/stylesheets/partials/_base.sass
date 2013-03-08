@@ -66,18 +66,19 @@ label
 input
   &[type=time]
     border: 3px dashed #fff
+    padding: 3px 0
     width: 175px
     margin: 5px 0
     font-size: 1.2em
     color: #fff
     background-color: transparent
 
+    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+      -webkit-appearance: none
+      margin: 0
     &:disabled
       border: none
       opacity: 1.0
-      &::-webkit-inner-spin-button
-        -webkit-appearance: none
-        margin: 0
 
     &.wake-time
       text-align: center
