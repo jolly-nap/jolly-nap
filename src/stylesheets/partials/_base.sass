@@ -17,7 +17,7 @@ $header-height: 65px
     family: 'Press Start 2P'
     style: normal
     weight: 400
-  src: local('Press Start 2P'), local('PressStart2P-Regular'), url('data:font/woff;base64,' + $press_start_2p) format('woff')
+  src: local('Press Start 2P'), local('PressStart2P-Regular'), url(http://themes.googleusercontent.com/static/fonts/pressstart2p/v1/8Lg6LX8-ntOHUQnvQ0E7o3dD2UuwsmbX3BOp4SL_VwM.woff) format('woff')
 
 *
   box-sizing: border-box
@@ -84,26 +84,31 @@ body
     text-shadow: 0px 2px 1px hsl(154, 100%, 17%)
 
 .site-footer
+  display: none
   clear: both
   height: $footer-height
   margin-top: -$footer-height
 
 
 .blurb
+
   &.get-up
-    margin-top: 35px
+    margin-top: 20px
     margin-bottom: 12px
 
   &.bed-time
-    margin-top: 5px
-    display: none
-
+    margin-top: 10px
   &.wake-time-explanation
+    margin-top: 5px
+    margin-bottom: 10px
+    display: none
+  &.wake-up-at
     display: none
     margin-top: 20px
     margin-bottom: 10px
 
 .share
+  display: none
   padding-left: 60px
   text-align: center
 
@@ -168,6 +173,10 @@ input
       &[data-wellness='5']
         color: $wellness-5
         text-shadow: 0px 1px 0px darken($wellness-5, 50%), 0px 2px 0px darken($wellness-5, 50%)
+
+.btn-container
+  position: fixed
+  bottom: 8px
 
 .btn
   display: block
