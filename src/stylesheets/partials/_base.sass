@@ -5,6 +5,8 @@ $wellness-3: hsl(62, 75%, 58%)
 $wellness-4: hsl(80, 84%, 60%)
 $wellness-5:  hsl(121, 100%, 62%)
 
+$accent: hsl(154, 100%, 50%)
+
 *
   box-sizing: border-box
 
@@ -50,7 +52,7 @@ body
     top: -3.5em
 
   .subtitle
-    color: hsl(154, 100%, 50%)
+    color: $accent
     text-shadow: 0px 2px 1px hsl(154, 100%, 17%)
 
 .blurb
@@ -64,7 +66,7 @@ body
 .wake-up-container
   display: inline-block
   text-align: center
-  border: 3px dashed #fff
+  border: 3px dashed lighten($accent, 30%)
   padding: 10px 4px
 
 label

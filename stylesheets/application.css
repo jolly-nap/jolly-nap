@@ -431,7 +431,7 @@ body {
 .wake-up-container {
   display: inline-block;
   text-align: center;
-  border: 3px dashed white;
+  border: 3px dashed #99ffd3;
   padding: 10px 4px; }
 
 label {
