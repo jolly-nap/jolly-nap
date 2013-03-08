@@ -39,6 +39,5 @@ sleepNow = function() {
     wakeTime = wakeTimes[i];
     $wakeTimes.append("<div>        <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>       </div>");
   }
-  $(".wake-time-explanation, .bed-time").fadeIn();
-  return console.log(wakeTimes);
+  return $(".wake-time-explanation, .bed-time").fadeIn();
 };
