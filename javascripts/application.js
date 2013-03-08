@@ -5,6 +5,11 @@ $("#sleep-now").click(function(e) {
   return sleepNow();
 });
 
+$('#calculate-wake-time').click(function(e) {
+  e.preventDefault();
+  return $('#wake-up-time').focus();
+});
+
 $('#wake-up-time').change(function(e) {
   var $input;
   $input = $(e.target);

@@ -390,6 +390,8 @@ input {
 
 html {
   min-height: 100%; }
+  html.touch input[type=time]::-webkit-inner-spin-button, html.touch input[type=time]::-webkit-outer-spin-button {
+    -webkit-appearance: none; }
 
 body {
   margin: 0 auto;
@@ -448,15 +450,15 @@ input[type=time] {
   margin: 5px 0;
   font-size: 1.2em;
   color: white;
-  background-color: transparent; }
-  input[type=time]::-webkit-inner-spin-button, input[type=time]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0; }
+  background-color: transparent;
+    background-color-margin: 0; }
   input[type=time]:disabled {
     opacity: 1; }
   input[type=time].wake-time {
     display: inline-block;
     margin-top: 10px; }
+    input[type=time].wake-time::-webkit-inner-spin-button, input[type=time].wake-time::-webkit-outer-spin-button {
+      -webkit-appearance: none; }
     input[type=time].wake-time[data-wellness='0'] {
       color: #ffba52;
       text-shadow: 0px 1px 0px #523100, 0px 2px 0px #523100; }

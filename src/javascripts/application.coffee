@@ -2,6 +2,10 @@ $("#sleep-now").click (e) ->
   e.preventDefault()
   sleepNow()
 
+$('#calculate-wake-time').click (e) ->
+  e.preventDefault()
+  $('#wake-up-time').focus()
+
 $('#wake-up-time').change (e) ->
   $input = $(e.target)
   $('.wake-up-container').toggleClass('set')

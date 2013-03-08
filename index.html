@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
   <head>
     <title>Jolly Nap</title>
     <meta content="Eric Wright" name="author" />
@@ -11,23 +11,28 @@
     <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <link href="apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114" />
     <meta content="yes" name="apple-mobile-web-app-capable" />
+    <script src="javascripts/modernizr.min.js"></script>
   </head>
   <body>
+    <div id="fb-root"></div>
     <header class="site-header">
       <span class="logo">Jolly Nap</span>
       <div class="subtitle">Sleep Calculator</div>
     </header>
-    <div class="bedtime blurb">Going to bed?</div>
-    <a class="btn primary" href="#sleep-now" id="sleep-now">Get Waketime</a>
+    <div class="bedtime blurb">You need 6 sleep cycles to wake up rested.</div>
+    <a class="btn primary" href="#sleep-now" id="sleep-now">Sleep now</a>
     <div id="wake-times"></div>
-    <div class="get-up blurb">When do you need to get up?</div>
+    <div class="get-up blurb">  When do you have to wake up?</div>
     <div class="wake-up-container">
       <label for="wake-up-time">Wake Up Time</label><input id="wake-up-time" name="wake-up-time" required="required" type="time" value="00:00" />
     </div>
-    <a class="btn" href="#wake-time" id="calculate-wake-time">Get Bedtime</a>
+    <div class="share">
+      <div class="fb-like" data-colorscheme="dark" data-href="http://jollynap.com" data-layout="button_count" data-send="false" data-show-faces="false" data-width="320"></div>
+    </div>
     <footer>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script src="javascripts/application.js"></script>
+      <script src="javascripts/facebook.min.js"></script>
     </footer>
   </body>
 </html>

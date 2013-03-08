@@ -13,6 +13,11 @@ $accent: hsl(154, 100%, 50%)
 html
   min-height: 100%
 
+  &.touch
+    input[type=time]
+      &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+        -webkit-appearance: none
+
 body
   // max-width: 320px
   // max-height: 356px
@@ -90,8 +95,6 @@ input
     color: #fff
     background-color: transparent
 
-    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
-      -webkit-appearance: none
       margin: 0
     &:disabled
       opacity: 1.0
@@ -99,6 +102,9 @@ input
     &.wake-time
       display: inline-block
       margin-top: 10px
+
+      &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+        -webkit-appearance: none
 
       &[data-wellness='0']
         color: $wellness-0
