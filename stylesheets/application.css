@@ -431,7 +431,11 @@ body {
   margin-bottom: 12px; }
 
 .share {
+  margin-top: 15px;
+  padding-bottom: 10px;
   text-align: left; }
+  .share .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr, .share ._5v4 _5vc _5v8 {
+    display: none !important; }
 
 .wake-up-container {
   display: inline-block;
