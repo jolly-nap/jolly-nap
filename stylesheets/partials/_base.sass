@@ -16,6 +16,7 @@ body
   font:
     size: 16px
     family: "Press Start 2P", sans-serif
+  text-shadow: 0px 2px 1px hsl(0, 0%, 47%)
 
 
 .site-header
@@ -40,14 +41,16 @@ body
   & > *
     display: inline-block
 
-  .colon
-    +animation-name(blink)
-    +animation-duration(1s)
-    +animation-fill-mode(forwards)
-    +animation-timing-function(linear)
-    +animation-iteration-count(infinite)
+    // Webkit has some strange artifacts on non-standard font updates.
+    // This seems to fix it.
+    padding-top: 2px
 
-
+  .hours
+    margin-right: 2px
+  .minutes
+    margin-right: 10px
+  .seconds
+    margin-right: 10px
 
 .btn
   +user-select(none)
