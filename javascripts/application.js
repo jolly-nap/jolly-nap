@@ -30,7 +30,7 @@ sleepNow = function() {
   $wakeTimes.html('');
   for (i = _i = 0, _len = wakeTimes.length; _i < _len; i = ++_i) {
     wakeTime = wakeTimes[i];
-    $wakeTimes.append("<input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>");
+    $wakeTimes.append("<div>        <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>       </div>");
   }
   return console.log(wakeTimes);
 };

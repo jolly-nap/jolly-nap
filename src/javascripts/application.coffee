@@ -29,5 +29,7 @@ sleepNow = ->
   $wakeTimes.html('')
   for wakeTime, i in wakeTimes
     $wakeTimes.append(
-      "<input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>")
+      "<div>
+        <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>
+       </div>")
   console.log wakeTimes
