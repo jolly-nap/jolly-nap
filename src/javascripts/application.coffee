@@ -1,3 +1,8 @@
+window.addEventListener "load", ->
+  setTimeout ->
+    window.scrollTo(0, 1)
+  , 0
+
 $("#sleep-now").click (e) ->
   $(@).parent('.btn-container').slideUp()
   e.preventDefault()
