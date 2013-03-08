@@ -38,4 +38,4 @@ sleepNow = ->
        </div>")
 
   $(".wake-time-explanation, .bed-time").fadeIn()
-  console.log wakeTimes
+  # console.log wakeTimes
