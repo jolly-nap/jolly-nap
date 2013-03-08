@@ -444,7 +444,6 @@ input {
         -webkit-appearance: none;
         margin: 0; }
     input[type=time].wake-time {
-      min-width: 100%;
       text-align: center;
       display: inline-block;
       margin-top: 10px; }
