@@ -2,9 +2,10 @@ $("#sleep-now").click (e) ->
   e.preventDefault()
   sleepNow()
 
-$("#new-bedtime").submit (e) ->
-  e.preventDefault()
-  console.log e
+$('#wake-up-time').change (e) ->
+  $input = $(e.target)
+  if $input.val() = ''
+    $input.val('0:00')
 
 
 sleepNow = ->

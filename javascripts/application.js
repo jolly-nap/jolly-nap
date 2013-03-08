@@ -5,9 +5,10 @@ $("#sleep-now").click(function(e) {
   return sleepNow();
 });
 
-$("#new-bedtime").submit(function(e) {
-  e.preventDefault();
-  return console.log(e);
+$('#wake-up-time').change(function(e) {
+  var $input;
+  $input = $(e.target);
+  return $input.val('0:00');
 });
 
 sleepNow = function() {
