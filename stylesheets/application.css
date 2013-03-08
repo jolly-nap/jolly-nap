@@ -432,12 +432,14 @@ label {
   display: none; }
 
 input[type=time] {
+  border: 3px dashed white;
   width: 175px;
   margin: 5px 0;
   font-size: 1.2em;
   color: white;
   background-color: transparent; }
   input[type=time]:disabled {
+    border: none;
     opacity: 1; }
     input[type=time]:disabled::-webkit-inner-spin-button {
       -webkit-appearance: none;
