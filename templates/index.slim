@@ -1,0 +1,36 @@
+doctype html
+
+html
+  head
+    title Jolly Nap
+
+    meta(name="author" content="Eric Wright")
+    meta(name="description" content="Get the most out of your nap.")
+    meta(name="keywords" content="jolly nap, nap, sleepytime, sleepyti.me")
+    meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no")
+
+    link(href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css')
+    link(href='stylesheets/application.css' rel='stylesheet' type='text/css')
+
+    link(rel="icon" type="image/png" href="/favicon.png")
+  body
+    header.site-header
+      .logo Jolly Nap
+      .subtitle Sleep Calculator
+
+    section.content
+      #active.clock
+        span.hours
+        span.colon &#58;
+        span.minutes
+        span.seconds
+        span.meridian
+
+    .sleep-controls
+      | I need to wake up at
+      a#sleep-calculate.btn Calculate
+      a#sleep-now.btn.secondary Sleep Now
+
+    footer
+      script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+      script src="javascripts/application.js"

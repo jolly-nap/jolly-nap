@@ -1,0 +1,116 @@
+*
+  box-sizing: border-box
+
+html
+  min-height: 100%
+
+body
+  line-height: 1
+  height: 100%
+  min-height: 100%
+  background-color: #333
+
+  background-image: url('data:image/png;base64,' + $background-image)
+  background-size: 7px 7px
+  color: #fff
+  font:
+    size: 16px
+    family: "Press Start 2P", sans-serif
+
+
+.site-header
+  margin: 15px 0
+  text-align: center
+
+  .logo
+    font-size: 3em
+    margin-bottom: 20px
+
+    text-shadow: -1px 4px 1px hsl(0, 0%, 47%)
+
+  .subtitle
+    text-shadow: 0px 2px 1px hsl(0, 0%, 47%)
+
+
+.clock
+  margin: 30px 0
+  font-size: 1.5em
+  text-align: center
+
+  & > *
+    display: inline-block
+
+  .colon
+    +animation-name(blink)
+    +animation-duration(1s)
+    +animation-fill-mode(forwards)
+    +animation-timing-function(linear)
+    +animation-iteration-count(infinite)
+
+
+
+.btn
+  +user-select(none)
+  display: inline-block
+  font-size: 18px
+
+  color: white
+  background-color: hsl(172, 100%, 47%)
+  padding: 10px 20px
+  margin: 20px
+  border-radius: 2px
+
+  box-shadow: 0px 6px 0 hsl(172, 50%, 47%), 2px 8px 8px #555
+  text-shadow: 0px -1px 0 hsl(0, 0%, 67%)
+
+  &:hover
+    position: relative
+    bottom: 2px
+    -webkit-transition-property: all
+    -webkit-transition-duration: 200ms
+    -webkit-transition-timing-function: ease-out
+
+    -moz-transition-property: all
+    -moz-transition-duration: 200ms
+    -moz-transition-timing-function: ease-out
+
+    background-color: hsl(172, 95%, 47%)
+    box-shadow: 0px 8px 0 hsl(172, 50%, 47%), 3px 10px 10px #555
+
+  &:active
+    position: relative
+    bottom: -5px
+    -webkit-transition-property: all
+    -webkit-transition-duration: 100ms
+    -webkit-transition-timing-function: ease-out
+
+    -moz-transition-property: all
+    -moz-transition-duration: 100ms
+    -moz-transition-timing-function: ease-out
+
+    background-color: hsl(172, 95%, 47%)
+    box-shadow: 0px 1px 0 hsl(172, 50%, 47%), 2px 3px 5px #555
+
+
+
+  &.secondary
+    background-color: hsl(345, 100%, 47%)
+    box-shadow: 0px 6px 0 hsl(345, 50%, 47%), 2px 8px 8px #555
+    text-shadow: 0px -1px 0 hsl(0, 0%, 20%)
+
+
+    &:hover
+      position: relative
+      bottom: 2px
+
+      background-color: hsl(346, 95%, 47%)
+      box-shadow: 0px 8px 0 hsl(345, 50%, 47%), 3px 10px 10px #555
+
+
+    &:active
+      position: relative
+      bottom: -5px
+
+      background-color: hsl(345, 95%, 47%)
+      box-shadow: 0px 1px 0 hsl(345, 50%, 47%), 2px 3px 5px #555
+
