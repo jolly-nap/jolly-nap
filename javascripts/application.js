@@ -21,7 +21,7 @@ $(function() {
     return $('.wake-up-container').toggleClass('set');
   });
   sleepNow = function() {
-    var $wakeTimes, i, minutes, now, sleepPrep, wakeTime, wakeTimes, _i, _len;
+    var $wakeTimes, i, minutes, now, sleepPrep, wakeTime, wakeTimeStrings, wakeTimes, _i, _len;
     $wakeTimes = $('#wake-times');
     sleepPrep = 14;
     now = new Date();
@@ -38,18 +38,21 @@ $(function() {
       i++;
     }
     $wakeTimes.html('');
+    wakeTimeStrings = "";
     for (i = _i = 0, _len = wakeTimes.length; _i < _len; i = ++_i) {
       wakeTime = wakeTimes[i];
-      $wakeTimes.append("<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>         </div>");
+      wakeTimeStrings += "<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>         </div>";
     }
-    $('.btn-container').fadeOut();
-    return $(".wake-time-explanation, .wake-up-at, .share").fadeIn(function() {
-      return scrollTo('.wake-up-at');
+    return $('.btn-container').fadeOut(150, function() {
+      $wakeTimes.append(wakeTimeStrings);
+      return $(".wake-time-explanation, .wake-up-at, .share").fadeIn(150, function() {
+        return scrollTo('.wake-up-at');
+      });
     });
   };
   return scrollTo = function(element) {
     return $('body').animate({
       scrollTop: $(element).offset().top - 10
-    }, 200);
+    }, 150);
   };
 });

@@ -35,15 +35,17 @@ $ ->
       i++
 
     $wakeTimes.html('')
+    wakeTimeStrings = ""
     for wakeTime, i in wakeTimes
-      $wakeTimes.append(
+      wakeTimeStrings +=
         "<div>
           <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>
-         </div>")
+         </div>"
 
-    $('.btn-container').fadeOut()
-    $(".wake-time-explanation, .wake-up-at, .share").fadeIn ->
-      scrollTo('.wake-up-at')
+    $('.btn-container').fadeOut 150, ->
+      $wakeTimes.append(wakeTimeStrings)
+      $(".wake-time-explanation, .wake-up-at, .share").fadeIn 150, ->
+        scrollTo('.wake-up-at')
 
   scrollTo = (element) ->
-    $('body').animate { scrollTop: $(element).offset().top - 10}, 200
+    $('body').animate { scrollTop: $(element).offset().top - 10}, 150
