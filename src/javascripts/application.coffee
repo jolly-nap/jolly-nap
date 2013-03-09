@@ -4,7 +4,6 @@ window.addEventListener "load", ->
   , 0
 $ ->
   $("#sleep-now").click (e) ->
-    $(@).parent('.btn-container').slideUp()
     e.preventDefault()
     sleepNow()
 
@@ -42,8 +41,9 @@ $ ->
           <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>
          </div>")
 
+    $('.btn-container').fadeOut()
     $(".wake-time-explanation, .wake-up-at, .share").fadeIn ->
       scrollTo('.wake-up-at')
 
   scrollTo = (element) ->
-    $('body').animate { scrollTop: $(element).offset().top }, 200
+    $('body').animate { scrollTop: $(element).offset().top - 10}, 200
