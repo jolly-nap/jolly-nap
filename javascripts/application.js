@@ -8,7 +8,6 @@ window.addEventListener("load", function() {
 $(function() {
   var scrollTo, sleepNow;
   $("#sleep-now").click(function(e) {
-    $(this).parent('.btn-container').slideUp();
     e.preventDefault();
     return sleepNow();
   });
@@ -43,13 +42,14 @@ $(function() {
       wakeTime = wakeTimes[i];
       $wakeTimes.append("<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>         </div>");
     }
+    $('.btn-container').fadeOut();
     return $(".wake-time-explanation, .wake-up-at, .share").fadeIn(function() {
       return scrollTo('.wake-up-at');
     });
   };
   return scrollTo = function(element) {
     return $('body').animate({
-      scrollTop: $(element).offset().top
+      scrollTop: $(element).offset().top - 10
     }, 200);
   };
 });
