@@ -8,7 +8,7 @@ $wellness-5:  hsl(121, 100%, 62%)
 $accent: hsl(154, 100%, 50%)
 
 // Layout defaults
-$footer-height: 35px
+$footer-height: 155px
 $header-height: 65px
 
 *
@@ -76,7 +76,8 @@ body
     text-shadow: 0px 2px 1px hsl(154, 100%, 17%)
 
 .site-footer
-  display: none
+  border: 1px solid transparent
+  // display: none
   clear: both
   height: $footer-height
   margin-top: -$footer-height
@@ -87,8 +88,6 @@ body
     margin-top: 20px
     margin-bottom: 12px
 
-  &.bed-time
-    margin-top: 10px
   &.wake-time-explanation
     margin-top: 5px
     margin-bottom: 12px
@@ -164,10 +163,6 @@ input
       &[data-wellness='5']
         color: $wellness-5
         text-shadow: 0px 1px 0px darken($wellness-5, 50%), 0px 2px 0px darken($wellness-5, 50%)
-
-.btn-container
-  position: absolute
-  bottom: 8px
 
 .btn
   display: block
