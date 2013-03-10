@@ -30,11 +30,15 @@ html.no-js
         .subtitle Sleep Calculator
 
       .content
+        // Bed time calculator
         .get-up.blurb When do you have to wake up?
         .wake-up-container
           label(for="wake-up-time") Wake Up Time
-          input#wake-up-time(type='time' name='wake-up-time' value="00:00" required)
+          input#wake-up-time(type='time' name='wake-up-time' value="00:00")
 
+        #bed-times
+
+        // Sleep now calculator
         .wake-up-at.blurb Try to wake up at:
 
         #wake-times

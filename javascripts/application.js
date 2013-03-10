@@ -6,7 +6,7 @@ window.addEventListener("load", function() {
 });
 
 $(function() {
-  var scrollTo, sleepNow;
+  var findBedtime, scrollTo, sleepNow;
   $("#sleep-now").click(function(e) {
     e.preventDefault();
     return sleepNow();
@@ -16,9 +16,12 @@ $(function() {
     return $('#wake-up-time').focus();
   });
   $('#wake-up-time').change(function(e) {
-    var $input;
+    var $input, hours, minutes, value;
     $input = $(e.target);
-    return $('.wake-up-container').toggleClass('set');
+    value = $input.val();
+    hours = value.substr(0, 2);
+    minutes = Math.round(value.substr(3, 5) / 10) * 10;
+    return findBedtime(hours, minutes);
   });
   sleepNow = function() {
     var $wakeTimes, i, minutes, now, sleepPrep, wakeTime, wakeTimeStrings, wakeTimes, _i, _len;
@@ -48,6 +51,34 @@ $(function() {
       return $(".wake-time-explanation, .wake-up-at, .share").fadeIn(150, function() {
         return scrollTo('.wake-up-at');
       });
+    });
+  };
+  findBedtime = function(wakeHour, wakeMinute) {
+    var $bedTimes, bedTime, bedTimeStrings, bedTimes, i, sleepCycle, wakeTime, _i, _len;
+    $bedTimes = $('#bed-times');
+    sleepCycle = 60000 * 90;
+    wakeTime = new Date();
+    wakeTime.setHours(wakeHour);
+    wakeTime.setMinutes(wakeMinute);
+    bedTimes = [];
+    i = 0;
+    while (i < 6) {
+      wakeTime.setTime(wakeTime.getTime() - sleepCycle);
+      if (!(i < 2)) {
+        bedTimes.push(wakeTime.toTimeString().substr(0, 5));
+      }
+      i++;
+    }
+    bedTimes.reverse();
+    $bedTimes.html('');
+    bedTimeStrings = "";
+    for (i = _i = 0, _len = bedTimes.length; _i < _len; i = ++_i) {
+      bedTime = bedTimes[i];
+      bedTimeStrings += "<div>          <input class='bed-time' type='time' value='" + bedTime + "' disabled data-wellness='" + (i + 2) + "'/>         </div>";
+    }
+    return $('.get-up.blurb').fadeOut(150, function() {
+      $bedTimes.append(bedTimeStrings);
+      return scrollTo(".wake-up-container");
     });
   };
   return scrollTo = function(element) {
