@@ -13,7 +13,11 @@ $ ->
 
   $('#wake-up-time').change (e) ->
     $input = $(e.target)
-    $('.wake-up-container').toggleClass('set')
+    value = $input.val()
+
+    hours = value.substr(0,2)
+    minutes = Math.round(value.substr(3,5) / 10) * 10
+    findBedtime hours, minutes
 
   sleepNow = ->
     $wakeTimes = $('#wake-times')
@@ -46,6 +50,39 @@ $ ->
       $wakeTimes.append(wakeTimeStrings)
       $(".wake-time-explanation, .wake-up-at, .share").fadeIn 150, ->
         scrollTo('.wake-up-at')
+
+  findBedtime = (wakeHour, wakeMinute) ->
+    $bedTimes = $('#bed-times')
+
+    sleepCycle = 60000 * 90 # 90 minutes in milliseconds
+
+    wakeTime = new Date()
+    wakeTime.setHours(wakeHour)
+    wakeTime.setMinutes(wakeMinute)
+
+    bedTimes = []
+
+    i = 0
+    while i < 6
+      wakeTime.setTime(wakeTime.getTime() - sleepCycle)
+
+      # We don't need the first 2 cycles
+      bedTimes.push(wakeTime.toTimeString().substr(0,5)) unless i < 2
+      i++
+
+    bedTimes.reverse() # The bedtimes are backwards.
+
+    $bedTimes.html('')
+    bedTimeStrings = ""
+    for bedTime, i in bedTimes
+      bedTimeStrings +=
+        "<div>
+          <input class='bed-time' type='time' value='#{bedTime}' disabled data-wellness='#{i+2}'/>
+         </div>"
+
+    $('.get-up.blurb').fadeOut 150, ->
+      $bedTimes.append(bedTimeStrings)
+      scrollTo(".wake-up-container")
 
   scrollTo = (element) ->
     $('body').animate { scrollTop: $(element).offset().top - 10}, 150

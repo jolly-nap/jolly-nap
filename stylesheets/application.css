@@ -440,7 +440,7 @@ body {
   margin-top: -165px; }
 
 .blurb.get-up {
-  margin: 12px 0; }
+  margin: 12px 0 40px; }
 .blurb.wake-time-explanation {
   margin-top: 5px;
   margin-bottom: 12px;
@@ -459,7 +459,7 @@ body {
   display: inline-block;
   text-align: center;
   border: 3px dashed #99ffd3;
-  margin-top: 40px;
+  margin-top: 12px;
   padding: 10px 4px; }
   .wake-up-container input[type=time] {
     text-align: center; }
@@ -480,27 +480,27 @@ input[type=time] {
     background-color-margin: 0; }
   input[type=time]:disabled {
     opacity: 1; }
-  input[type=time].wake-time {
+  input[type=time].wake-time, input[type=time].bed-time {
     display: inline-block;
     margin-top: 10px; }
-    input[type=time].wake-time::-webkit-inner-spin-button, input[type=time].wake-time::-webkit-outer-spin-button {
+    input[type=time].wake-time::-webkit-inner-spin-button, input[type=time].wake-time::-webkit-outer-spin-button, input[type=time].bed-time::-webkit-inner-spin-button, input[type=time].bed-time::-webkit-outer-spin-button {
       -webkit-appearance: none; }
-    input[type=time].wake-time[data-wellness='0'] {
+    input[type=time].wake-time[data-wellness='0'], input[type=time].bed-time[data-wellness='0'] {
       color: #ffba52;
       text-shadow: 0px 1px 0px #523100, 0px 2px 0px #523100; }
-    input[type=time].wake-time[data-wellness='1'] {
+    input[type=time].wake-time[data-wellness='1'], input[type=time].bed-time[data-wellness='1'] {
       color: #ffd447;
       text-shadow: 0px 1px 0px #473700, 0px 2px 0px #473700; }
-    input[type=time].wake-time[data-wellness='2'] {
+    input[type=time].wake-time[data-wellness='2'], input[type=time].bed-time[data-wellness='2'] {
       color: #ffd447;
       text-shadow: 0px 1px 0px #473700, 0px 2px 0px #473700; }
-    input[type=time].wake-time[data-wellness='3'] {
+    input[type=time].wake-time[data-wellness='3'], input[type=time].bed-time[data-wellness='3'] {
       color: #dfe444;
       text-shadow: 0px 1px 0px #232405, 0px 2px 0px #232405; }
-    input[type=time].wake-time[data-wellness='4'] {
+    input[type=time].wake-time[data-wellness='4'], input[type=time].bed-time[data-wellness='4'] {
       color: #b6ef43;
       text-shadow: 0px 1px 0px #212f04, 0px 2px 0px #212f04; }
-    input[type=time].wake-time[data-wellness='5'] {
+    input[type=time].wake-time[data-wellness='5'], input[type=time].bed-time[data-wellness='5'] {
       color: #3dff40;
       text-shadow: 0px 1px 0px #003d01, 0px 2px 0px #003d01; }
 
@@ -540,9 +540,3 @@ input[type=time] {
     .btn.primary:hover {
       background-color: #ea063b;
       box-shadow: 0px 6px 0 #b43c5a, 3px 10px 10px #921c39, inset 1px 1px 4px #ea8080; }
-
-@media all and (min-width: 500px) {
-  html, body {
-    margin: 0 auto;
-    max-width: 500px;
-    max-height: 300px; } }
