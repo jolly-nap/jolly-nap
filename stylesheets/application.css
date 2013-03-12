@@ -454,7 +454,7 @@ em {
   .blurb.bed-now {
     display: block; }
   .blurb.sleep-at {
-    margin-top: 10px; }
+    margin: 15px 0 10px; }
   .blurb.wake-time-explanation {
     margin: 5px 0 12px; }
   .blurb.bed-time-explanation {
