@@ -47,6 +47,7 @@ $(function() {
     }
     return $('.site-footer').fadeOut(150, function() {
       $wakeTimes.append(wakeTimeStrings);
+      $(".wrapper").addClass("no-footer");
       return $(".wake-time-explanation, .wake-up-at, .share").fadeIn(150, function() {
         return scrollTo('.wake-up-at');
       });

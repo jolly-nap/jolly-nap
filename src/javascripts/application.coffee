@@ -48,6 +48,7 @@ $ ->
 
     $('.site-footer').fadeOut 150, ->
       $wakeTimes.append(wakeTimeStrings)
+      $(".wrapper").addClass("no-footer") # Remove excess padding from viewport.
       $(".wake-time-explanation, .wake-up-at, .share").fadeIn 150, ->
         scrollTo('.wake-up-at')
 
