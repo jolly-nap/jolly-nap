@@ -6,6 +6,8 @@ $wellness-4: hsl(80, 84%, 60%)
 $wellness-5:  hsl(121, 100%, 62%)
 
 $accent: hsl(154, 100%, 50%)
+$accent-shadow: hsl(154, 100%, 17%)
+
 
 // Layout defaults
 $footer-height: 165px
@@ -42,15 +44,21 @@ body
     family: "Press Start 2P", sans-serif
   text-shadow: 0px 1px 0px hsl(0, 0%, 47%), 0px 2px 0px hsl(0, 0%, 47%)
 
+em
+  font-style: normal
+  color: $accent
+  text-shadow: 0px 2px 1px $accent-shadow
+
 
 .content
   padding-bottom: 20px
 
 .wrapper
   min-height: 100%
-  padding-bottom: $footer-height
   overflow: auto
 
+  & .site-footer:visible
+    padding-bottom: $footer-height
 
 .site-header
   height: $header-height
@@ -73,7 +81,7 @@ body
 
   .subtitle
     color: $accent
-    text-shadow: 0px 2px 1px hsl(154, 100%, 17%)
+    text-shadow: 0px 2px 1px $accent-shadow
 
 .site-footer
   border: 1px solid transparent
@@ -84,21 +92,29 @@ body
 
 
 .blurb
+  display: none
   &.get-up
+    display: block
     margin: 12px 0 40px
 
+  &.bed-now
+    display: block
+
+  &.sleep-at
+    margin-top: 10px
+
   &.wake-time-explanation
-    margin-top: 5px
-    margin-bottom: 12px
-    display: none
+    margin: 5px 0 12px
+
+  &.bed-time-explanation
+    margin: 5px 0 28px
+
   &.wake-up-at
-    display: none
-    margin-top: 20px
-    margin-bottom: 10px
+    margin: 20px 0 10px
 
 .share
   display: none
-  padding-left: 60px
+  padding-left: 30px
   text-align: center
 
 

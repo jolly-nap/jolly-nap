@@ -20,17 +20,17 @@ $(function() {
     $input = $(e.target);
     value = $input.val();
     hours = value.substr(0, 2);
-    minutes = Math.round(value.substr(3, 5) / 10) * 10;
+    minutes = (value.substr(3, 5) / 10) * 10;
     return findBedtime(hours, minutes);
   });
   sleepNow = function() {
-    var $wakeTimes, i, minutes, now, sleepPrep, wakeTime, wakeTimeStrings, wakeTimes, _i, _len;
+    var $wakeTimes, i, minutes, now, sleepPrep, wakeTime, wakeTimeStrings, wakeTimes, _i, _j, _len;
     $wakeTimes = $('#wake-times');
     sleepPrep = 14;
     now = new Date();
+    now.setMinutes(Math.round(now.getMinutes() / 10) * 10);
     wakeTimes = [];
-    i = 0;
-    while (i < 6) {
+    for (i = _i = 0; _i < 6; i = ++_i) {
       minutes = now.getMinutes();
       if (i === 0) {
         now.setMinutes(minutes + sleepPrep + 90);
@@ -38,15 +38,14 @@ $(function() {
         now.setMinutes(minutes + 90);
       }
       wakeTimes.push(now.toTimeString().substr(0, 5));
-      i++;
     }
     $wakeTimes.html('');
     wakeTimeStrings = "";
-    for (i = _i = 0, _len = wakeTimes.length; _i < _len; i = ++_i) {
+    for (i = _j = 0, _len = wakeTimes.length; _j < _len; i = ++_j) {
       wakeTime = wakeTimes[i];
-      wakeTimeStrings += "<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>         </div>";
+      wakeTimeStrings = ("<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>         </div>") + wakeTimeStrings;
     }
-    return $('.btn-container').fadeOut(150, function() {
+    return $('.site-footer').fadeOut(150, function() {
       $wakeTimes.append(wakeTimeStrings);
       return $(".wake-time-explanation, .wake-up-at, .share").fadeIn(150, function() {
         return scrollTo('.wake-up-at');
@@ -54,31 +53,34 @@ $(function() {
     });
   };
   findBedtime = function(wakeHour, wakeMinute) {
-    var $bedTimes, bedTime, bedTimeStrings, bedTimes, i, sleepCycle, wakeTime, _i, _len;
+    var $bedTimes, bedTime, bedTimeStrings, bedTimes, compensatedWakeTime, i, sleepCycle, sleepWarmup, wakeTime, _i, _j, _len;
     $bedTimes = $('#bed-times');
     sleepCycle = 60000 * 90;
+    sleepWarmup = 60000 * 15;
+    wakeMinute = Math.round(wakeMinute / 10) * 10;
     wakeTime = new Date();
     wakeTime.setHours(wakeHour);
     wakeTime.setMinutes(wakeMinute);
     bedTimes = [];
-    i = 0;
-    while (i < 6) {
+    for (i = _i = 0; _i < 6; i = ++_i) {
       wakeTime.setTime(wakeTime.getTime() - sleepCycle);
+      compensatedWakeTime = new Date(wakeTime.getTime());
+      compensatedWakeTime.setTime(compensatedWakeTime.getTime() - sleepWarmup);
       if (!(i < 2)) {
-        bedTimes.push(wakeTime.toTimeString().substr(0, 5));
+        bedTimes.push(compensatedWakeTime.toTimeString().substr(0, 5));
       }
-      i++;
     }
-    bedTimes.reverse();
     $bedTimes.html('');
     bedTimeStrings = "";
-    for (i = _i = 0, _len = bedTimes.length; _i < _len; i = ++_i) {
+    for (i = _j = 0, _len = bedTimes.length; _j < _len; i = ++_j) {
       bedTime = bedTimes[i];
-      bedTimeStrings += "<div>          <input class='bed-time' type='time' value='" + bedTime + "' disabled data-wellness='" + (i + 2) + "'/>         </div>";
+      bedTimeStrings = ("<div>          <input class='bed-time' type='time' value='" + bedTime + "' disabled data-wellness='" + (i + 2) + "'/>         </div>") + bedTimeStrings;
     }
     return $('.get-up.blurb').fadeOut(150, function() {
       $bedTimes.append(bedTimeStrings);
-      return scrollTo(".wake-up-container");
+      return $(".sleep-at, .bed-time-explanation.blurb, .share").fadeIn(150, function() {
+        return scrollTo(".wake-up-container");
+      });
     });
   };
   return scrollTo = function(element) {
