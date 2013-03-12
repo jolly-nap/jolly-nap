@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'pry'
 
+gem 'thin'
+
 gem 'guard'
 gem 'guard-coffeescript'
 gem 'guard-sass'
