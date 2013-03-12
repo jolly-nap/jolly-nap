@@ -420,7 +420,7 @@ em {
   overflow: auto;
   padding-bottom: 165px; }
   .wrapper.no-footer {
-    padding-bottom: 0; }
+    padding-bottom: 40px; }
 
 .site-header {
   height: 65px;
