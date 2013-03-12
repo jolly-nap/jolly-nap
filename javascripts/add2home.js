@@ -24,7 +24,7 @@ var addToHome = (function (w) {
 
     options = {
       autostart: true,      // Automatically open the balloon
-      returningVisitor: false,  // Show the balloon to returning visitors only (setting this to true is HIGHLY RECCOMENDED)
+      returningVisitor: true,  // Show the balloon to returning visitors only (setting this to true is HIGHLY RECCOMENDED)
       animationIn: 'drop',    // drop || bubble || fade
       animationOut: 'fade',   // drop || bubble || fade
       startDelay: 3000,     // 3 seconds from page load before the balloon appears
@@ -72,7 +72,7 @@ var addToHome = (function (w) {
 
   function init () {
     // Preliminary check, all further checks are performed on iDevices only
-    // if ( !isIDevice ) return;
+    if ( !isIDevice ) return;
 
     var now = Date.now(),
       i;
