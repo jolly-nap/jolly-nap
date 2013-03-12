@@ -407,13 +407,19 @@ body {
   font-family: "Press Start 2P", sans-serif;
   text-shadow: 0px 1px 0px #787878, 0px 2px 0px #787878; }
 
+em {
+  font-style: normal;
+  color: #00ff91;
+  text-shadow: 0px 2px 1px #005731; }
+
 .content {
   padding-bottom: 20px; }
 
 .wrapper {
   min-height: 100%;
-  padding-bottom: 165px;
   overflow: auto; }
+  .wrapper .site-footer:visible {
+    padding-bottom: 165px; }
 
 .site-header {
   height: 65px;
@@ -439,20 +445,25 @@ body {
   height: 165px;
   margin-top: -165px; }
 
-.blurb.get-up {
-  margin: 12px 0 40px; }
-.blurb.wake-time-explanation {
-  margin-top: 5px;
-  margin-bottom: 12px;
+.blurb {
   display: none; }
-.blurb.wake-up-at {
-  display: none;
-  margin-top: 20px;
-  margin-bottom: 10px; }
+  .blurb.get-up {
+    display: block;
+    margin: 12px 0 40px; }
+  .blurb.bed-now {
+    display: block; }
+  .blurb.sleep-at {
+    margin-top: 10px; }
+  .blurb.wake-time-explanation {
+    margin: 5px 0 12px; }
+  .blurb.bed-time-explanation {
+    margin: 5px 0 28px; }
+  .blurb.wake-up-at {
+    margin: 20px 0 10px; }
 
 .share {
   display: none;
-  padding-left: 60px;
+  padding-left: 30px;
   text-align: center; }
 
 .wake-up-container {

@@ -16,7 +16,7 @@ $ ->
     value = $input.val()
 
     hours = value.substr(0,2)
-    minutes = Math.round(value.substr(3,5) / 10) * 10
+    minutes = (value.substr(3,5) / 10) * 10
     findBedtime hours, minutes
 
   sleepNow = ->
@@ -25,28 +25,28 @@ $ ->
     sleepPrep = 14
 
     now = new Date()
+    now.setMinutes(Math.round(now.getMinutes() / 10) * 10)
     wakeTimes = []
 
-    i = 0
-    while i < 6
+    for i in [0...6]
       minutes = now.getMinutes()
+
       if i == 0
         now.setMinutes(minutes + sleepPrep + 90)
       else
         now.setMinutes(minutes + 90)
 
       wakeTimes.push(now.toTimeString().substr(0,5))
-      i++
 
     $wakeTimes.html('')
     wakeTimeStrings = ""
     for wakeTime, i in wakeTimes
-      wakeTimeStrings +=
+      wakeTimeStrings =
         "<div>
           <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>
-         </div>"
+         </div>" + wakeTimeStrings
 
-    $('.btn-container').fadeOut 150, ->
+    $('.site-footer').fadeOut 150, ->
       $wakeTimes.append(wakeTimeStrings)
       $(".wake-time-explanation, .wake-up-at, .share").fadeIn 150, ->
         scrollTo('.wake-up-at')
@@ -54,7 +54,10 @@ $ ->
   findBedtime = (wakeHour, wakeMinute) ->
     $bedTimes = $('#bed-times')
 
-    sleepCycle = 60000 * 90 # 90 minutes in milliseconds
+    # Sleep cycles are 90 minutes. 14 minutes are needed to fall asleep.
+    sleepCycle  = 60000 * 90 # Minutes to milliseconds
+    sleepWarmup = 60000 * 15
+    wakeMinute = Math.round(wakeMinute / 10) * 10
 
     wakeTime = new Date()
     wakeTime.setHours(wakeHour)
@@ -62,27 +65,30 @@ $ ->
 
     bedTimes = []
 
-    i = 0
-    while i < 6
+    for i in [0...6]
+      # Subtract the cycle.
       wakeTime.setTime(wakeTime.getTime() - sleepCycle)
+      compensatedWakeTime = new Date(wakeTime.getTime())
+
+      # Subtract the warmup.
+      compensatedWakeTime.setTime(compensatedWakeTime.getTime() - sleepWarmup)
 
       # We don't need the first 2 cycles
-      bedTimes.push(wakeTime.toTimeString().substr(0,5)) unless i < 2
-      i++
+      bedTimes.push(compensatedWakeTime.toTimeString().substr(0,5)) unless i < 2
 
-    bedTimes.reverse() # The bedtimes are backwards.
 
     $bedTimes.html('')
     bedTimeStrings = ""
     for bedTime, i in bedTimes
-      bedTimeStrings +=
+      bedTimeStrings =
         "<div>
           <input class='bed-time' type='time' value='#{bedTime}' disabled data-wellness='#{i+2}'/>
-         </div>"
+         </div>" + bedTimeStrings
 
     $('.get-up.blurb').fadeOut 150, ->
       $bedTimes.append(bedTimeStrings)
-      scrollTo(".wake-up-container")
+      $(".sleep-at, .bed-time-explanation.blurb, .share").fadeIn 150, ->
+        scrollTo(".wake-up-container")
 
   scrollTo = (element) ->
     $('body').animate { scrollTop: $(element).offset().top - 10}, 150

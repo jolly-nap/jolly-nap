@@ -6,17 +6,23 @@
     <meta content="Jolly Nap" name="title" />
     <meta content="Get the most out of your nap." name="description" />
     <meta content="jolly nap, nap, sleepytime, sleepyti.me" name="keywords" />
-    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
-    <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta charset="utf-8" />
+    <meta content="Jolly Nap" property="og:title" />
+    <meta content="website" property="og:type" />
+    <meta content="http://jollynap.com" property="og:url" />
     <meta content="http://jollynap.com/apple-touch-icon-114x114.png" property="og:image" />
+    <meta content="Jolly Nap" property="og:site_name" />
+    <meta content="1725986533" property="fb:admins" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <link href="stylesheets/application.css" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css" />
     <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <link href="apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114" />
     <script src="javascripts/modernizr.min.js"></script>
   </head>
   <body>
+    <div id="fb-root"></div>
     <div class="wrapper">
       <header class="site-header">
         <span class="logo">Jolly Nap</span>
@@ -27,24 +33,26 @@
         <div class="wake-up-container">
           <label for="wake-up-time">Wake Up Time</label><input id="wake-up-time" name="wake-up-time" type="time" value="00:00" />
         </div>
+        <div class="sleep-at blurb">Go to bed at:</div>
         <div id="bed-times"></div>
+        <div class="bed-time-explanation blurb">Each sleep cycle is&nbsp;<em>90&nbsp;</em>minutes.</div>
         <div class="wake-up-at blurb">Try to wake up at:</div>
         <div id="wake-times"></div>
-        <div class="wake-time-explanation blurb">You need 6 sleep cycles to wake up rested.</div>
+        <div class="wake-time-explanation blurb">You need&nbsp;<em>6&nbsp;</em>sleep cycles to wake up rested.</div>
         <div class="share">
-          <iframe allowTransparency="true" class="fb-like" frameborder="0" scrolling="no" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjollynap.com&amp;send=false&amp;layout=button_count&amp;width=160&amp;show_faces=false&amp;font&amp;colorscheme=dark&amp;action=like&amp;height=21&amp;appId=349697388482885" style="border:none; overflow:hidden; width:160px; height:21px;"></iframe>
+          <iframe allowTransparency="true" class="fb-like" frameborder="0" scrolling="no" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjolly-nap.com&send=false&layout=button_count&width=310&show_faces=false&font&colorscheme=dark&action=recommend&height=21&appId=349697388482885" style="border:none; overflow:hidden; width:160px; height:21px;"></iframe>
         </div>
       </div>
     </div>
     <footer class="site-footer">
       <div class="btn-container">
-        <div class="bed-time blurb">
+        <div class="bed-now blurb">
           <p>Going to bed now?</p>
           <p>Find out when you have to wake up.</p>
         </div>
         <a class="btn primary" href="#sleep-now" id="sleep-now">Sleep now</a>
       </div>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script src="javascripts/application.js"></script>
     </footer>
   </body>
