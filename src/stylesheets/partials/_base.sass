@@ -57,8 +57,10 @@ em
   min-height: 100%
   overflow: auto
 
-  & .site-footer:visible
-    padding-bottom: $footer-height
+  padding-bottom: $footer-height
+
+  &.no-footer
+    padding-bottom: 0
 
 .site-header
   height: $header-height

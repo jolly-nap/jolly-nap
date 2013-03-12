@@ -417,9 +417,10 @@ em {
 
 .wrapper {
   min-height: 100%;
-  overflow: auto; }
-  .wrapper .site-footer:visible {
-    padding-bottom: 165px; }
+  overflow: auto;
+  padding-bottom: 165px; }
+  .wrapper.no-footer {
+    padding-bottom: 0; }
 
 .site-header {
   height: 65px;
