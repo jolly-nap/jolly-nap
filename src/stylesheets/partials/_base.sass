@@ -131,7 +131,10 @@ em
   input
     &[type=time]
       text-align: center
-
+    &[type=time]::-webkit-clear-button,
+    &[type=time]::-moz-clear-button,
+    &[type=time]::clear-button
+      display: none
   &.set
     border-color: transparent
 
