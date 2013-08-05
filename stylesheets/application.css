@@ -475,14 +475,14 @@ em {
   padding: 10px 4px; }
   .wake-up-container input[type=time] {
     text-align: center; }
-  .wake-up-container input[type=time]::-webkit-clear-button, .wake-up-container input[type=time]::-moz-clear-button, .wake-up-container input[type=time]::clear-button {
-    display: none; }
   .wake-up-container.set {
     border-color: transparent; }
 
 label {
   display: none; }
 
+input[type=time]::-webkit-clear-button, input[type=time]::-moz-clear-button, input[type=time]::clear-button {
+  display: none; }
 input[type=time] {
   text-align: right;
   border: none;
