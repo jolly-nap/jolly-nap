@@ -1,3 +1,4 @@
+var humanDateString;
 
 window.addEventListener("load", function() {
   return setTimeout(function() {
@@ -37,13 +38,13 @@ $(function() {
       } else {
         now.setMinutes(minutes + 90);
       }
-      wakeTimes.push(now.toTimeString().substr(0, 5));
+      wakeTimes.push(humanDateString(now));
     }
     $wakeTimes.html('');
     wakeTimeStrings = "";
     for (i = _j = 0, _len = wakeTimes.length; _j < _len; i = ++_j) {
       wakeTime = wakeTimes[i];
-      wakeTimeStrings = ("<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "' step='60'/>         </div>") + wakeTimeStrings;
+      wakeTimeStrings = ("<div class='time-container'>          <div class='wake-time' data-wellness='" + i + "'>" + wakeTime + "</div>         </div>") + wakeTimeStrings;
     }
     return $('.site-footer').fadeOut(150, function() {
       $wakeTimes.append(wakeTimeStrings);
@@ -68,14 +69,14 @@ $(function() {
       compensatedWakeTime = new Date(wakeTime.getTime());
       compensatedWakeTime.setTime(compensatedWakeTime.getTime() - sleepWarmup);
       if (!(i < 2)) {
-        bedTimes.push(compensatedWakeTime.toTimeString().substr(0, 5));
+        bedTimes.push(humanDateString(compensatedWakeTime));
       }
     }
     $bedTimes.html('');
     bedTimeStrings = "";
     for (i = _j = 0, _len = bedTimes.length; _j < _len; i = ++_j) {
       bedTime = bedTimes[i];
-      bedTimeStrings = ("<div>          <input class='bed-time' type='time' value='" + bedTime + "' disabled data-wellness='" + (i + 2) + "'/>         </div>") + bedTimeStrings;
+      bedTimeStrings = ("<div class='time-container'>          <div class='bed-time' data-wellness='" + (i + 2) + "'>" + bedTime + "</div>         </div>") + bedTimeStrings;
     }
     return $('.get-up.blurb').fadeOut(150, function() {
       $bedTimes.append(bedTimeStrings);
@@ -90,3 +91,23 @@ $(function() {
     }, 150);
   };
 });
+
+humanDateString = function(date) {
+  var am, hours, meridian, minutes;
+  hours = date.getHours();
+  minutes = date.getMinutes();
+  am = true;
+  if (hours > 12) {
+    am = false;
+    hours -= 12;
+  } else if (hours === 12) {
+    am = false;
+  } else if (hours === 0) {
+    hours = 12;
+  }
+  if (hours < 10) {
+    hours = '0' + hours;
+  }
+  meridian = am ? 'AM' : 'PM';
+  return "" + hours + ":" + minutes + " " + meridian;
+};

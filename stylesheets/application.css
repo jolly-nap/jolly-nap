@@ -490,43 +490,35 @@ input[type=time] {
   margin: 5px 0;
   font-size: 1.2em;
   color: white;
-  background-color: transparent;
-    background-color-margin: 0; }
+  background-color: transparent; }
   input[type=time]:disabled {
     opacity: 1; }
   input[type=time]::-webkit-clear-button {
     display: none; }
   input[type=time]::clear-button {
     display: none; }
-  input[type=time].wake-time, input[type=time].bed-time {
-    display: inline-block;
-    margin-top: 10px; }
-    input[type=time].wake-time::-webkit-inner-spin-button, input[type=time].wake-time::-webkit-outer-spin-button, input[type=time].bed-time::-webkit-inner-spin-button, input[type=time].bed-time::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      appearance: none;
-      margin: 0; }
-    input[type=time].wake-time::inner-spin-button, input[type=time].wake-time::outer-spin-button, input[type=time].bed-time::inner-spin-button, input[type=time].bed-time::outer-spin-button {
-      -webkit-appearance: none;
-      appearance: none;
-      margin: 0; }
-    input[type=time].wake-time[data-wellness='0'], input[type=time].bed-time[data-wellness='0'] {
-      color: #ffba52;
-      text-shadow: 0px 1px 0px #523100, 0px 2px 0px #523100; }
-    input[type=time].wake-time[data-wellness='1'], input[type=time].bed-time[data-wellness='1'] {
-      color: #ffd447;
-      text-shadow: 0px 1px 0px #473700, 0px 2px 0px #473700; }
-    input[type=time].wake-time[data-wellness='2'], input[type=time].bed-time[data-wellness='2'] {
-      color: #ffd447;
-      text-shadow: 0px 1px 0px #473700, 0px 2px 0px #473700; }
-    input[type=time].wake-time[data-wellness='3'], input[type=time].bed-time[data-wellness='3'] {
-      color: #dfe444;
-      text-shadow: 0px 1px 0px #232405, 0px 2px 0px #232405; }
-    input[type=time].wake-time[data-wellness='4'], input[type=time].bed-time[data-wellness='4'] {
-      color: #b6ef43;
-      text-shadow: 0px 1px 0px #212f04, 0px 2px 0px #212f04; }
-    input[type=time].wake-time[data-wellness='5'], input[type=time].bed-time[data-wellness='5'] {
-      color: #3dff40;
-      text-shadow: 0px 1px 0px #003d01, 0px 2px 0px #003d01; }
+
+.time-container {
+  font-size: 1.2em;
+  margin: 22px 0 12px 16px; }
+  .time-container .wake-time[data-wellness='0'], .time-container .bed-time[data-wellness='0'] {
+    color: #ffba52;
+    text-shadow: 0px 1px 0px #523100, 0px 2px 0px #523100; }
+  .time-container .wake-time[data-wellness='1'], .time-container .bed-time[data-wellness='1'] {
+    color: #ffd447;
+    text-shadow: 0px 1px 0px #473700, 0px 2px 0px #473700; }
+  .time-container .wake-time[data-wellness='2'], .time-container .bed-time[data-wellness='2'] {
+    color: #ffd447;
+    text-shadow: 0px 1px 0px #473700, 0px 2px 0px #473700; }
+  .time-container .wake-time[data-wellness='3'], .time-container .bed-time[data-wellness='3'] {
+    color: #dfe444;
+    text-shadow: 0px 1px 0px #232405, 0px 2px 0px #232405; }
+  .time-container .wake-time[data-wellness='4'], .time-container .bed-time[data-wellness='4'] {
+    color: #b6ef43;
+    text-shadow: 0px 1px 0px #212f04, 0px 2px 0px #212f04; }
+  .time-container .wake-time[data-wellness='5'], .time-container .bed-time[data-wellness='5'] {
+    color: #3dff40;
+    text-shadow: 0px 1px 0px #003d01, 0px 2px 0px #003d01; }
 
 .btn {
   display: block;

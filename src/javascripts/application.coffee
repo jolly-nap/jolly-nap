@@ -35,15 +35,14 @@ $ ->
         now.setMinutes(minutes + sleepPrep + 90)
       else
         now.setMinutes(minutes + 90)
-
-      wakeTimes.push(now.toTimeString().substr(0,5))
+      wakeTimes.push(humanDateString(now))
 
     $wakeTimes.html('')
     wakeTimeStrings = ""
     for wakeTime, i in wakeTimes
       wakeTimeStrings =
-        "<div>
-          <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}' step='60'/>
+        "<div class='time-container'>
+          <div class='wake-time' data-wellness='#{i}'>#{wakeTime}</div>
          </div>" + wakeTimeStrings
 
     $('.site-footer').fadeOut 150, ->
@@ -75,15 +74,15 @@ $ ->
       compensatedWakeTime.setTime(compensatedWakeTime.getTime() - sleepWarmup)
 
       # We don't need the first 2 cycles
-      bedTimes.push(compensatedWakeTime.toTimeString().substr(0,5)) unless i < 2
+      bedTimes.push(humanDateString(compensatedWakeTime)) unless i < 2
 
 
     $bedTimes.html('')
     bedTimeStrings = ""
     for bedTime, i in bedTimes
       bedTimeStrings =
-        "<div>
-          <input class='bed-time' type='time' value='#{bedTime}' disabled data-wellness='#{i+2}'/>
+        "<div class='time-container'>
+          <div class='bed-time' data-wellness='#{i+2}'>#{bedTime}</div>
          </div>" + bedTimeStrings
 
     $('.get-up.blurb').fadeOut 150, ->
@@ -93,3 +92,24 @@ $ ->
 
   scrollTo = (element) ->
     $('body').animate { scrollTop: $(element).offset().top - 10}, 150
+
+
+humanDateString = (date) ->
+  hours = date.getHours()
+  minutes = date.getMinutes()
+  am = true
+
+  if hours > 12
+    am = false
+    hours -= 12
+  else if hours == 12
+    am = false
+  else if hours == 0
+    hours = 12
+
+  if hours < 10
+    hours = '0' + hours
+
+  meridian = if am then 'AM' else 'PM'
+
+  return "#{hours}:#{minutes} #{meridian}"
