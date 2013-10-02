@@ -110,6 +110,9 @@ humanDateString = (date) ->
   if hours < 10
     hours = '0' + hours
 
+  if minutes < 10
+    minutes = '0' + minutes
+
   meridian = if am then 'AM' else 'PM'
 
   return "#{hours}:#{minutes} #{meridian}"
