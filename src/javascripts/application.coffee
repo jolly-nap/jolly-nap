@@ -43,7 +43,7 @@ $ ->
     for wakeTime, i in wakeTimes
       wakeTimeStrings =
         "<div>
-          <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}'/>
+          <input class='wake-time' type='time' value='#{wakeTime}' disabled data-wellness='#{i}' step='60'/>
          </div>" + wakeTimeStrings
 
     $('.site-footer').fadeOut 150, ->
