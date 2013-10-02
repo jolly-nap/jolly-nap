@@ -43,7 +43,7 @@ $(function() {
     wakeTimeStrings = "";
     for (i = _j = 0, _len = wakeTimes.length; _j < _len; i = ++_j) {
       wakeTime = wakeTimes[i];
-      wakeTimeStrings = ("<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "'/>         </div>") + wakeTimeStrings;
+      wakeTimeStrings = ("<div>          <input class='wake-time' type='time' value='" + wakeTime + "' disabled data-wellness='" + i + "' step='60'/>         </div>") + wakeTimeStrings;
     }
     return $('.site-footer').fadeOut(150, function() {
       $wakeTimes.append(wakeTimeStrings);

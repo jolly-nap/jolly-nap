@@ -156,12 +156,25 @@ input
     &:disabled
       opacity: 1.0
 
+    &::-webkit-clear-button
+      display: none
+
+    &::clear-button
+      display: none
+
     &.wake-time, &.bed-time
       display: inline-block
       margin-top: 10px
 
       &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
         -webkit-appearance: none
+        appearance: none
+        margin: 0
+
+      &::inner-spin-button, &::outer-spin-button
+        -webkit-appearance: none
+        appearance: none
+        margin: 0
 
       &[data-wellness='0']
         color: $wellness-0

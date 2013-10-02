@@ -494,11 +494,21 @@ input[type=time] {
     background-color-margin: 0; }
   input[type=time]:disabled {
     opacity: 1; }
+  input[type=time]::-webkit-clear-button {
+    display: none; }
+  input[type=time]::clear-button {
+    display: none; }
   input[type=time].wake-time, input[type=time].bed-time {
     display: inline-block;
     margin-top: 10px; }
     input[type=time].wake-time::-webkit-inner-spin-button, input[type=time].wake-time::-webkit-outer-spin-button, input[type=time].bed-time::-webkit-inner-spin-button, input[type=time].bed-time::-webkit-outer-spin-button {
-      -webkit-appearance: none; }
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0; }
+    input[type=time].wake-time::inner-spin-button, input[type=time].wake-time::outer-spin-button, input[type=time].bed-time::inner-spin-button, input[type=time].bed-time::outer-spin-button {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0; }
     input[type=time].wake-time[data-wellness='0'], input[type=time].bed-time[data-wellness='0'] {
       color: #ffba52;
       text-shadow: 0px 1px 0px #523100, 0px 2px 0px #523100; }
