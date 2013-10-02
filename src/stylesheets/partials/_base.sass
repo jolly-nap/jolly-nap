@@ -152,7 +152,6 @@ input
     color: #fff
     background-color: transparent
 
-      margin: 0
     &:disabled
       opacity: 1.0
 
@@ -162,40 +161,32 @@ input
     &::clear-button
       display: none
 
-    &.wake-time, &.bed-time
-      display: inline-block
-      margin-top: 10px
+.time-container
 
-      &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
-        -webkit-appearance: none
-        appearance: none
-        margin: 0
+  font-size: 1.2em
+  margin: 22px 0 12px 16px
 
-      &::inner-spin-button, &::outer-spin-button
-        -webkit-appearance: none
-        appearance: none
-        margin: 0
+  .wake-time, .bed-time
+    &[data-wellness='0']
+      color: $wellness-0
+      text-shadow: 0px 1px 0px darken($wellness-0, 50%), 0px 2px 0px darken($wellness-0, 50%)
 
-      &[data-wellness='0']
-        color: $wellness-0
-        text-shadow: 0px 1px 0px darken($wellness-0, 50%), 0px 2px 0px darken($wellness-0, 50%)
+    &[data-wellness='1']
+      color: $wellness-1
+      text-shadow: 0px 1px 0px darken($wellness-1, 50%), 0px 2px 0px darken($wellness-1, 50%)
 
-      &[data-wellness='1']
-        color: $wellness-1
-        text-shadow: 0px 1px 0px darken($wellness-1, 50%), 0px 2px 0px darken($wellness-1, 50%)
-
-      &[data-wellness='2']
-        color: $wellness-2
-        text-shadow: 0px 1px 0px darken($wellness-2, 50%), 0px 2px 0px darken($wellness-2, 50%)
-      &[data-wellness='3']
-        color: $wellness-3
-        text-shadow: 0px 1px 0px darken($wellness-3, 50%), 0px 2px 0px darken($wellness-3, 50%)
-      &[data-wellness='4']
-        color: $wellness-4
-        text-shadow: 0px 1px 0px darken($wellness-4, 50%), 0px 2px 0px darken($wellness-4, 50%)
-      &[data-wellness='5']
-        color: $wellness-5
-        text-shadow: 0px 1px 0px darken($wellness-5, 50%), 0px 2px 0px darken($wellness-5, 50%)
+    &[data-wellness='2']
+      color: $wellness-2
+      text-shadow: 0px 1px 0px darken($wellness-2, 50%), 0px 2px 0px darken($wellness-2, 50%)
+    &[data-wellness='3']
+      color: $wellness-3
+      text-shadow: 0px 1px 0px darken($wellness-3, 50%), 0px 2px 0px darken($wellness-3, 50%)
+    &[data-wellness='4']
+      color: $wellness-4
+      text-shadow: 0px 1px 0px darken($wellness-4, 50%), 0px 2px 0px darken($wellness-4, 50%)
+    &[data-wellness='5']
+      color: $wellness-5
+      text-shadow: 0px 1px 0px darken($wellness-5, 50%), 0px 2px 0px darken($wellness-5, 50%)
 
 .btn
   display: block
