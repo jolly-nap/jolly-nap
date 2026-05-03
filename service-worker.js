@@ -10,15 +10,15 @@
 
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (globalThis))
 
-const CACHE_VERSION = "v2"
+const CACHE_VERSION = "v3"
 const CACHE_NAME = `jolly-nap-${CACHE_VERSION}`
 
 const APP_SHELL = [
 	"./",
 	"./index.html",
 	"./manifest.webmanifest",
-	"./stylesheets/application.css",
-	"./javascripts/application.js",
+	"./stylesheets/main.css",
+	"./javascripts/main.js",
 	"./javascripts/add2home.js",
 	"./favicon.ico",
 	"./icons/icon-ios-marketing-1024x1024.png",
