@@ -1,0 +1,7 @@
+{
+	"extends": "@sister.software/tsconfig",
+	"compilerOptions": {
+		"emitDeclarationOnly": true,
+		"lib": ["ESNext", "DOM", "DOM.AsyncIterable", "DOM.Iterable"]
+	}
+}

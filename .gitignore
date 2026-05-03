@@ -1,2 +1,15 @@
-.sass-cache/*
-src/.sass-cache/*
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+out/
+
+node_modules
+dist/
