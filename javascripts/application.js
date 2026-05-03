@@ -4,131 +4,31 @@
  * @author Teffen Ellis, et al.
  */
 
-var humanDateString
+const SLEEP_CYCLE_MS = 90 * 60 * 1000
+const SLEEP_WARMUP_MS = 15 * 60 * 1000
+const SLEEP_PREP_MINUTES = 14
+const SLEEP_CYCLES = 6
 
-window.addEventListener("load", function () {
-	return setTimeout(function () {
-		return window.scrollTo(0, 1)
-	}, 0)
-})
-
-$(function () {
-	var findBedtime, scrollTo, sleepNow
-	$("#sleep-now").click(function (e) {
-		e.preventDefault()
-		return sleepNow()
-	})
-	$("#calculate-wake-time").click(function (e) {
-		e.preventDefault()
-		return $("#wake-up-time").focus()
-	})
-	$("#wake-up-time").change(function (e) {
-		var $input, hours, minutes, value
-		$input = $(e.target)
-		value = $input.val()
-		hours = value.substr(0, 2)
-		minutes = (value.substr(3, 5) / 10) * 10
-		return findBedtime(hours, minutes)
-	})
-	sleepNow = function () {
-		var $wakeTimes, i, minutes, now, sleepPrep, wakeTime, wakeTimeStrings, wakeTimes, _i, _j, _len
-		$wakeTimes = $("#wake-times")
-		sleepPrep = 14
-		now = new Date()
-		now.setMinutes(Math.round(now.getMinutes() / 10) * 10)
-		wakeTimes = []
-		for (i = _i = 0; _i < 6; i = ++_i) {
-			minutes = now.getMinutes()
-			if (i === 0) {
-				now.setMinutes(minutes + sleepPrep + 90)
-			} else {
-				now.setMinutes(minutes + 90)
-			}
-			wakeTimes.push(humanDateString(now))
-		}
-		$wakeTimes.html("")
-		wakeTimeStrings = ""
-		for (i = _j = 0, _len = wakeTimes.length; _j < _len; i = ++_j) {
-			wakeTime = wakeTimes[i]
-			wakeTimeStrings =
-				"<div class='time-container'>          <div class='wake-time' data-wellness='" +
-				i +
-				"'>" +
-				wakeTime +
-				"</div>         </div>" +
-				wakeTimeStrings
-		}
-		return $(".site-footer").fadeOut(150, function () {
-			$wakeTimes.append(wakeTimeStrings)
-			$(".wrapper").addClass("no-footer")
-			return $(".wake-time-explanation, .wake-up-at, .share").fadeIn(150, function () {
-				return scrollTo(".wake-up-at")
-			})
+window.addEventListener("load", () => {
+	setTimeout(() => window.scrollTo(0, 1), 0)
+	if ("serviceWorker" in navigator) {
+		navigator.serviceWorker.register("./service-worker.js").catch(() => {
+			/* registration failure is non-fatal — the app still works without offline support */
 		})
 	}
-	findBedtime = function (wakeHour, wakeMinute) {
-		var $bedTimes,
-			bedTime,
-			bedTimeStrings,
-			bedTimes,
-			compensatedWakeTime,
-			i,
-			sleepCycle,
-			sleepWarmup,
-			wakeTime,
-			_i,
-			_j,
-			_len
-		$bedTimes = $("#bed-times")
-		sleepCycle = 60000 * 90
-		sleepWarmup = 60000 * 15
-		wakeMinute = Math.round(wakeMinute / 10) * 10
-		wakeTime = new Date()
-		wakeTime.setHours(wakeHour)
-		wakeTime.setMinutes(wakeMinute)
-		bedTimes = []
-		for (i = _i = 0; _i < 6; i = ++_i) {
-			wakeTime.setTime(wakeTime.getTime() - sleepCycle)
-			compensatedWakeTime = new Date(wakeTime.getTime())
-			compensatedWakeTime.setTime(compensatedWakeTime.getTime() - sleepWarmup)
-			if (!(i < 2)) {
-				bedTimes.push(humanDateString(compensatedWakeTime))
-			}
-		}
-		$bedTimes.html("")
-		bedTimeStrings = ""
-		for (i = _j = 0, _len = bedTimes.length; _j < _len; i = ++_j) {
-			bedTime = bedTimes[i]
-			bedTimeStrings =
-				"<div class='time-container'>          <div class='bed-time' data-wellness='" +
-				(i + 2) +
-				"'>" +
-				bedTime +
-				"</div>         </div>" +
-				bedTimeStrings
-		}
-		return $(".get-up.blurb").fadeOut(150, function () {
-			$bedTimes.append(bedTimeStrings)
-			return $(".sleep-at, .bed-time-explanation.blurb, .share").fadeIn(150, function () {
-				return scrollTo(".wake-up-container")
-			})
-		})
-	}
-	return (scrollTo = function (element) {
-		return $("body").animate(
-			{
-				scrollTop: $(element).offset().top - 10,
-			},
-			150
-		)
-	})
 })
 
-humanDateString = function (date) {
-	var am, hours, meridian, minutes
-	hours = date.getHours()
-	minutes = date.getMinutes()
-	am = true
+/**
+ * Formats a date as a 12-hour clock string with leading zeroes and a meridian suffix.
+ *
+ * @param {Date} date - Date to format.
+ *
+ * @returns {string} The formatted clock string.
+ */
+function humanDateString(date) {
+	let hours = date.getHours()
+	const minutes = date.getMinutes()
+	let am = true
 	if (hours > 12) {
 		am = false
 		hours -= 12
@@ -137,12 +37,184 @@ humanDateString = function (date) {
 	} else if (hours === 0) {
 		hours = 12
 	}
-	if (hours < 10) {
-		hours = "0" + hours
-	}
-	if (minutes < 10) {
-		minutes = "0" + minutes
-	}
-	meridian = am ? "AM" : "PM"
-	return "" + hours + ":" + minutes + " " + meridian
+	const hh = String(hours).padStart(2, "0")
+	const mm = String(minutes).padStart(2, "0")
+	return `${hh}:${mm} ${am ? "AM" : "PM"}`
 }
+
+/**
+ * Toggles a CSS animation class on an element and resolves once the animation ends.
+ *
+ * @param {HTMLElement} el - Target element.
+ * @param {string} className - Animation class to apply.
+ *
+ * @returns {Promise<void>} Resolves when the animation finishes.
+ */
+function runAnimationClass(el, className) {
+	return new Promise((/** @type {() => void} */ resolve) => {
+		const handler = () => {
+			el.removeEventListener("animationend", handler)
+			el.classList.remove(className)
+			resolve()
+		}
+		el.addEventListener("animationend", handler, { once: true })
+		el.classList.add(className)
+	})
+}
+
+/**
+ * Fades an element out and then sets its display to none.
+ *
+ * @param {HTMLElement | null} el - Element to fade out, or null to skip.
+ */
+async function fadeOut(el) {
+	if (!el || el.style.display === "none") return
+	await runAnimationClass(el, "jn-fade-out")
+	el.style.display = "none"
+}
+
+/**
+ * Reveals an element with a fade-in animation.
+ *
+ * @param {HTMLElement | null} el - Element to fade in, or null to skip.
+ * @param {string} [displayValue] - CSS display value to apply before fading. Defaults to "block".
+ */
+async function fadeIn(el, displayValue = "block") {
+	if (!el) return
+	el.style.display = displayValue
+	await runAnimationClass(el, "jn-fade-in")
+}
+
+/**
+ * Fades in every element matching a selector in parallel.
+ *
+ * @param {string} selector - CSS selector to match.
+ * @param {string} [displayValue] - CSS display value applied before fading. Defaults to "block".
+ */
+function fadeInAll(selector, displayValue = "block") {
+	const elements = /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll(selector))
+	return Promise.all([...elements].map((el) => fadeIn(el, displayValue)))
+}
+
+/**
+ * Smoothly scrolls so the matching element sits ten pixels below the viewport top.
+ *
+ * @param {string} selector - CSS selector for the scroll target.
+ */
+function smoothScrollTo(selector) {
+	const target = document.querySelector(selector)
+	if (!target) return
+	const top = target.getBoundingClientRect().top + window.scrollY - 10
+	window.scrollTo({ top, behavior: "smooth" })
+}
+
+/**
+ * Builds a time-row DOM node with a wellness color tier.
+ *
+ * @param {string} time - Formatted time string to display.
+ * @param {number} wellness - Wellness tier index used by CSS to color the entry.
+ * @param {string} type - CSS class for the inner element (e.g. "wake-time" or "bed-time").
+ *
+ * @returns {HTMLDivElement} The container element ready to be appended.
+ */
+function createTimeNode(time, wellness, type) {
+	const container = document.createElement("div")
+	container.className = "time-container"
+	const inner = document.createElement("div")
+	inner.className = type
+	inner.dataset.wellness = String(wellness)
+	inner.textContent = time
+	container.appendChild(inner)
+	return container
+}
+
+async function sleepNow() {
+	const wakeTimesContainer = document.getElementById("wake-times")
+	if (!wakeTimesContainer) return
+
+	const now = new Date()
+	now.setMinutes(Math.round(now.getMinutes() / 10) * 10)
+
+	const wakeTimes = []
+	for (let i = 0; i < SLEEP_CYCLES; i++) {
+		const offset = i === 0 ? SLEEP_PREP_MINUTES + 90 : 90
+		now.setMinutes(now.getMinutes() + offset)
+		wakeTimes.push(humanDateString(now))
+	}
+
+	await fadeOut(/** @type {HTMLElement | null} */ (document.querySelector(".site-footer")))
+
+	wakeTimesContainer.replaceChildren()
+	for (let i = wakeTimes.length - 1; i >= 0; i--) {
+		const entry = wakeTimes[i]
+		if (entry !== undefined) {
+			wakeTimesContainer.appendChild(createTimeNode(entry, i, "wake-time"))
+		}
+	}
+
+	document.querySelector(".wrapper")?.classList.add("no-footer")
+
+	await fadeInAll(".wake-time-explanation, .wake-up-at, .share")
+
+	smoothScrollTo(".wake-up-at")
+}
+
+/**
+ * Computes recommended bed times for the given target wake-up clock and renders them.
+ *
+ * @param {number} wakeHour - Wake-up hour in 24-hour clock.
+ * @param {number} wakeMinute - Wake-up minute.
+ */
+async function findBedtime(wakeHour, wakeMinute) {
+	const bedTimesContainer = document.getElementById("bed-times")
+	if (!bedTimesContainer) return
+
+	const adjustedMinute = Math.round(wakeMinute / 10) * 10
+	const wakeTime = new Date()
+	wakeTime.setHours(wakeHour)
+	wakeTime.setMinutes(adjustedMinute)
+
+	const bedTimes = []
+	for (let i = 0; i < SLEEP_CYCLES; i++) {
+		wakeTime.setTime(wakeTime.getTime() - SLEEP_CYCLE_MS)
+		if (i >= 2) {
+			const compensated = new Date(wakeTime.getTime() - SLEEP_WARMUP_MS)
+			bedTimes.push(humanDateString(compensated))
+		}
+	}
+
+	await fadeOut(/** @type {HTMLElement | null} */ (document.querySelector(".get-up.blurb")))
+
+	bedTimesContainer.replaceChildren()
+	for (let i = bedTimes.length - 1; i >= 0; i--) {
+		const entry = bedTimes[i]
+		if (entry !== undefined) {
+			bedTimesContainer.appendChild(createTimeNode(entry, i + 2, "bed-time"))
+		}
+	}
+
+	await fadeInAll(".sleep-at, .bed-time-explanation.blurb, .share")
+
+	smoothScrollTo(".wake-up-container")
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	document.getElementById("sleep-now")?.addEventListener("click", (e) => {
+		e.preventDefault()
+		sleepNow()
+	})
+
+	document.getElementById("calculate-wake-time")?.addEventListener("click", (e) => {
+		e.preventDefault()
+		document.getElementById("wake-up-time")?.focus()
+	})
+
+	document.getElementById("wake-up-time")?.addEventListener("change", (e) => {
+		const target = /** @type {HTMLInputElement | null} */ (e.target)
+		const value = target?.value
+		if (!value) return
+		const [hh, mm] = value.split(":")
+		if (hh === undefined || mm === undefined) return
+		findBedtime(parseInt(hh, 10), parseInt(mm, 10))
+	})
+})

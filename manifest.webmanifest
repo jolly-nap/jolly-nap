@@ -1,0 +1,91 @@
+{
+	"name": "Jolly Nap",
+	"short_name": "Jolly Nap",
+	"description": "Get the most out of your nap.",
+	"start_url": "./",
+	"scope": "./",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#333333",
+	"theme_color": "#333333",
+	"icons": [
+		{
+			"src": "icons/icon-ios-27x20@2x.png",
+			"sizes": "54x40",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-iphone-29x29@2x.png",
+			"sizes": "58x58",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ipad-29x29@2x.png",
+			"sizes": "58x58",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ios-32x24@2x.png",
+			"sizes": "64x48",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ios-27x20@3x.png",
+			"sizes": "81x60",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-iphone-29x29@3x.png",
+			"sizes": "87x87",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ios-32x24@3x.png",
+			"sizes": "96x72",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-iphone-60x45@2x.png",
+			"sizes": "120x90",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ipad-67x50@2x.png",
+			"sizes": "134x100",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ipad-74x55@2x.png",
+			"sizes": "148x110",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-iphone-60x45@3x.png",
+			"sizes": "180x135",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ios-1024x768.png",
+			"sizes": "1024x768",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/icon-ios-marketing-1024x1024.png",
+			"sizes": "1024x1024",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	]
+}
